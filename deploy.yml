@@ -1,0 +1,7 @@
+- hosts: localhost
+  tasks:
+    - name: Build Docker Image
+      shell: docker build -t snakegame .
+
+    - name: Run DOcker Container
+      shell:  docker run --rm snakegame || true  

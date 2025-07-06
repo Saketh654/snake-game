@@ -1,4 +1,4 @@
-import pygame, sys, random
+import pygame, sys, random, socket, time
 
 pygame.init()
 WIDTH, HEIGHT = (840,640)
@@ -12,6 +12,17 @@ snake = [(100, 100)]
 direction = (CELL_SIZE, 0)
 food=[200,200]
 speed = 5
+
+def send_metric(metric_name,value):
+    try:
+        timestamp = int(time.time())
+        message = f"{metric_name} {value} {timestamp}\n"
+        sock = socket.socket()
+        sock.connect(('localhost',2003))
+        sock.sendall(message.encode())
+        sock.close()
+    except:
+        pass
 
 def move(snake, direction):
     head_x, head_y = snake[0]
@@ -33,6 +44,8 @@ def food_detection(food,speed):
         food = [pos1,pos2]
         snake.append((900,900))
         speed+=1
+        send_metric("snakegame.speed", speed)
+        send_metric("snakegame.score", len(snake))
     return food,speed
 
 
