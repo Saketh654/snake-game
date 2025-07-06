@@ -21,7 +21,4 @@ This is a classic Snake Game built using **Python** and **Pygame**, extended wit
 - Eat red food blocks to grow the snake and increase speed.
 - Avoid crashing into yourself or the wall.
 
----
-
-## 📁 Project Structure
 
