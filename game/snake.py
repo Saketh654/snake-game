@@ -12,6 +12,7 @@ snake = [(100, 100)]
 direction = (CELL_SIZE, 0)
 food=[200,200]
 speed = 5
+hello =0
 
 def send_metric(metric_name,value):
     try:
